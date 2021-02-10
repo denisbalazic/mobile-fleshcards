@@ -1,9 +1,11 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { StyleSheet, Alert } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import DeckList from "./components/DeckList";
+import { handleInitialData } from "./actions";
+import DecksContainer from "./components/DecksContainer";
 import Deck from "./components/Deck";
 import NewQuestion from "./components/NewQuestion";
 import NewDeck from "./components/NewDeck";
@@ -13,14 +15,27 @@ import Score from "./components/Score";
 
 const Stack = createStackNavigator();
 
-export default function App() {
+function App({ dispatch }) {
+  useEffect(() => {
+    dispatch(handleInitialData());
+  });
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="DeckList" component={DeckList} />
-        <Stack.Screen name="Deck" component={Deck} />
-        <Stack.Screen name="NewQuestion" component={NewQuestion} />
+        <Stack.Screen
+          name="DecksContainer"
+          component={DecksContainer}
+          options={{ title: "Deck List" }}
+        />
         <Stack.Screen name="NewDeck" component={NewDeck} />
+        <Stack.Screen
+          name="Deck"
+          component={Deck}
+          options={({ route }) => ({
+            title: route.params.deckName,
+          })}
+        />
+        <Stack.Screen name="NewQuestion" component={NewQuestion} />
         <Stack.Screen name="Question" component={Question} />
         <Stack.Screen name="Answer" component={Answer} />
         <Stack.Screen name="Score" component={Score} />
@@ -38,3 +53,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
+
+export default connect()(App);

@@ -1,11 +1,14 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const Question = ({}) => {
+const Question = ({ question, navigation }) => {
   return (
     <View style={style.container}>
-      <Text>Some text from Question</Text>
-      <Text></Text>
+      <Text>This is very difficult question:</Text>
+      <Text>{question}</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Answer")}>
+        <Text>Show answer</Text>
+      </TouchableOpacity>
     </View>
   );
 };

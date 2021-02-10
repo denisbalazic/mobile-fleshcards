@@ -3,7 +3,7 @@ import { View, Text, Pressable, StyleSheet } from "react-native";
 
 const DeckHeader = ({ deckName, deckCount, navigation }) => {
   return (
-    <View style={style.container}>
+    <View style={styles.container}>
       <Pressable onPress={() => navigation.navigate("Deck", { deckName })}>
         <Text>{deckName}</Text>
         <Text>{deckCount}</Text>
@@ -13,7 +13,7 @@ const DeckHeader = ({ deckName, deckCount, navigation }) => {
   );
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     margin: 10,
     padding: 8,

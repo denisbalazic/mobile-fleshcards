@@ -1,12 +1,13 @@
 import React from "react";
 import { View, Text } from "react-native";
+import { connect } from "react-redux";
 import DeckHeader from "./DeckHeader";
 
-const DeckList = ({ navigation }) => {
-  const decks = [
-    { name: "DEck1", questions: [1, 2, 3, 4, 5, 6] },
-    { name: "Deck2", questions: [1, 2, 3, 4] },
-  ];
+const DeckList = ({ navigation, decks }) => {
+  // const decks = [
+  //   { name: "DEck1", questions: [1, 2, 3, 4, 5, 6] },
+  //   { name: "Deck2", questions: [1, 2, 3, 4] },
+  // ];
   return (
     <View>
       <Text>Some text from DeckList</Text>
@@ -22,4 +23,10 @@ const DeckList = ({ navigation }) => {
   );
 };
 
-export default DeckList;
+const mapStateToProps = ({ decks }) => {
+  return {
+    decks: decks && Object.values(decks),
+  };
+};
+
+export default connect(mapStateToProps)(DeckList);

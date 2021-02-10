@@ -1,11 +1,11 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 
-const Answer = ({}) => {
+const Answer = ({ answer }) => {
   return (
     <View style={style.container}>
-      <Text>Some text from Answer</Text>
-      <Text></Text>
+      <Text>Very clever answer:</Text>
+      <Text>{answer}</Text>
     </View>
   );
 };
