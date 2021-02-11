@@ -15,7 +15,7 @@ const DecksContainer = ({ navigation }) => {
         style: styles.tabnav,
       }}
     >
-      <Tab.Screen name="Decks" component={DeckList} navigation={navigation} />
+      <Tab.Screen name="DeckList" component={DeckList} navigation={navigation} />
       <Tab.Screen name="New Deck" component={NewDeck} navigation={navigation} />
     </Tab.Navigator>
   );

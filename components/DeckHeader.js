@@ -1,14 +1,12 @@
 import React from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
-const DeckHeader = ({ deckName, deckCount, navigation }) => {
+const DeckHeader = ({ deck }) => {
   return (
     <View style={styles.container}>
-      <Pressable onPress={() => navigation.navigate("Deck", { deckName })}>
-        <Text>{deckName}</Text>
-        <Text>{deckCount}</Text>
-        <Text>Some text from DeckHeader</Text>
-      </Pressable>
+      <Text>{deck.name}</Text>
+      <Text>{deck.questions.length}</Text>
+      <Text>Some text from DeckHeaderss</Text>
     </View>
   );
 };

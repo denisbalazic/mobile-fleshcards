@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { View, Text, TextInput, Button, Alert, StyleSheet } from "react-native";
+import { addDeck } from "../actions";
 
-const NewDeck = ({}) => {
+const NewDeck = ({ dispatch }) => {
   const [deckName, setDeckName] = useState("");
 
   const handleSubmit = () => {
-    Alert.alert("Simple Button pressed");
+    console.log(deckName);
+    dispatch(addDeck(deckName));
     setDeckName("");
   };
 
@@ -29,4 +32,4 @@ const style = StyleSheet.create({
   },
 });
 
-export default NewDeck;
+export default connect()(NewDeck);

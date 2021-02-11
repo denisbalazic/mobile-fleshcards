@@ -1,20 +1,17 @@
 import React from "react";
+import { connect } from "react-redux";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const Deck = ({ route, navigation }) => {
-  const { deckName } = route.params;
+const Deck = ({ navigation, currentDeck }) => {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.header}>{deckName}</Text>
+        <Text style={styles.header}>{currentDeck.name}</Text>
       </View>
-      <TouchableOpacity
-        style={styles.touchable}
-        onPress={() => navigation.navigate("Question", { deckName })}
-      >
+      <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate("Card")}>
         <Text>Start Quiz</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.touchable}>
+      <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate("NewQuestion")}>
         <Text>Add Question</Text>
       </TouchableOpacity>
     </View>
@@ -36,4 +33,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Deck;
+const mapStateToProps = ({ currentDeck }) => {
+  return {
+    currentDeck,
+  };
+};
+
+export default connect(mapStateToProps)(Deck);

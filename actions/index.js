@@ -1,7 +1,12 @@
 import { getInitialData } from "../utils/data";
 
-export const ADD_QUESTION = "ADD_QUESTION";
 export const RECEIVE_DECKS = "RECEIVE_DECKS";
+export const SET_CURRENT_DECK = "SET_CURRENT_DECK";
+export const INCREASE_CURRENT_CARD = "INCREASE_CURRENT_CARD";
+export const SET_ANSWER_CORRECT = "SET_ANSWER_CORRECT";
+export const ADD_QUESTION = "ADD_QUESTION";
+export const ADD_DECK = "ADD_DECK";
+export const RESET_CURRENT_CARD = "RESET_CURRENT_CARD";
 
 // export function handleInitialData() {
 //   return (dispatch) => {
@@ -18,9 +23,44 @@ export function handleInitialData() {
   };
 }
 
-export function addQuestion(question) {
+export function setCurrentDeck(deck) {
+  return {
+    type: SET_CURRENT_DECK,
+    deck,
+  };
+}
+
+export function increaseCurrentCard() {
+  return {
+    type: INCREASE_CURRENT_CARD,
+  };
+}
+export function resetCurrentCard() {
+  return {
+    type: RESET_CURRENT_CARD,
+  };
+}
+
+export function setAnswerCorrect(isCorrect, currentDeck) {
+  return {
+    type: SET_ANSWER_CORRECT,
+    isCorrect,
+    deckName: currentDeck.name,
+    cardNo: currentDeck.cardNo,
+  };
+}
+
+export function addQuestion({ question, answer, deckName }) {
   return {
     type: ADD_QUESTION,
-    question,
+    question: { question, answer },
+    deckName,
+  };
+}
+
+export function addDeck(name) {
+  return {
+    type: ADD_DECK,
+    name,
   };
 }

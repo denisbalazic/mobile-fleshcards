@@ -1,11 +1,20 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const Answer = ({ answer }) => {
+const Answer = ({ answer, handleAnswerShowed, handleAnswer }) => {
   return (
     <View style={style.container}>
       <Text>Very clever answer:</Text>
       <Text>{answer}</Text>
+      <TouchableOpacity onPress={() => handleAnswerShowed(false)}>
+        <Text>Show Question</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleAnswer(true)}>
+        <Text>Correct</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={() => handleAnswer(false)}>
+        <Text>Incorrect</Text>
+      </TouchableOpacity>
     </View>
   );
 };

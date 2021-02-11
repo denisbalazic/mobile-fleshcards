@@ -9,8 +9,7 @@ import DecksContainer from "./components/DecksContainer";
 import Deck from "./components/Deck";
 import NewQuestion from "./components/NewQuestion";
 import NewDeck from "./components/NewDeck";
-import Question from "./components/Question";
-import Answer from "./components/Answer";
+import Card from "./components/Card";
 import Score from "./components/Score";
 
 const Stack = createStackNavigator();
@@ -35,9 +34,8 @@ function App({ dispatch }) {
             title: route.params.deckName,
           })}
         />
+        <Stack.Screen name="Card" component={Card} />
         <Stack.Screen name="NewQuestion" component={NewQuestion} />
-        <Stack.Screen name="Question" component={Question} />
-        <Stack.Screen name="Answer" component={Answer} />
         <Stack.Screen name="Score" component={Score} />
       </Stack.Navigator>
       <StatusBar style="auto" />

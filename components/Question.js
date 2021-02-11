@@ -1,12 +1,12 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const Question = ({ question, navigation }) => {
+const Question = ({ question, handleAnswerShowed }) => {
   return (
     <View style={style.container}>
       <Text>This is very difficult question:</Text>
       <Text>{question}</Text>
-      <TouchableOpacity onPress={() => navigation.navigate("Answer")}>
+      <TouchableOpacity onPress={() => handleAnswerShowed(true)}>
         <Text>Show answer</Text>
       </TouchableOpacity>
     </View>

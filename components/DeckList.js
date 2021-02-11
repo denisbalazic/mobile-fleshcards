@@ -1,31 +1,30 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Pressable, Alert } from "react-native";
 import { connect } from "react-redux";
+import { setCurrentDeck } from "../actions";
 import DeckHeader from "./DeckHeader";
 
-const DeckList = ({ navigation, decks }) => {
-  // const decks = [
-  //   { name: "DEck1", questions: [1, 2, 3, 4, 5, 6] },
-  //   { name: "Deck2", questions: [1, 2, 3, 4] },
-  // ];
+const DeckList = ({ navigation, decks, dispatch }) => {
+  const handleDeckSelection = (deckName) => {
+    dispatch(setCurrentDeck({ name: deckName }));
+    navigation.navigate("Deck", { deckName });
+  };
   return (
     <View>
       <Text>Some text from DeckList</Text>
       {decks.map((deck, id) => (
-        <DeckHeader
-          key={id}
-          deckName={deck.name}
-          deckCount={deck.questions.length}
-          navigation={navigation}
-        />
+        <Pressable key={id} onPress={() => handleDeckSelection(deck.name)}>
+          <DeckHeader key={id} deck={deck} />
+        </Pressable>
       ))}
     </View>
   );
 };
 
-const mapStateToProps = ({ decks }) => {
+const mapStateToProps = ({ decks, currentCard }) => {
   return {
     decks: decks && Object.values(decks),
+    currentCard,
   };
 };
 
