@@ -19,6 +19,10 @@ const Card = ({ questions, currentDeck, dispatch, navigation }) => {
   };
   return (
     <View style={style.container}>
+      <Text>{currentDeck.name}</Text>
+      <Text>
+        {currentDeck.cardNo}/{questions.length}
+      </Text>
       {questions.length === currentDeck.cardNo ? (
         <Score questions={questions} resetQuiz={resetQuiz} navigation={navigation} />
       ) : !answerShowed ? (

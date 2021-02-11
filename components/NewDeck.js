@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import { View, Text, TextInput, Button, Alert, StyleSheet } from "react-native";
-import { addDeck } from "../actions";
+import { addDeck, setCurrentDeck } from "../actions";
 
-const NewDeck = ({ dispatch }) => {
+const NewDeck = ({ dispatch, navigation }) => {
   const [deckName, setDeckName] = useState("");
 
   const handleSubmit = () => {
-    console.log(deckName);
     dispatch(addDeck(deckName));
+    dispatch(setCurrentDeck({ name: deckName, questions: [] }));
     setDeckName("");
+    navigation.navigate("Deck", { deckName });
   };
 
   return (
