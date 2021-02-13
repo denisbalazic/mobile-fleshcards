@@ -11,12 +11,14 @@ import NewQuestion from "./components/NewQuestion";
 import NewDeck from "./components/NewDeck";
 import Card from "./components/Card";
 import Score from "./components/Score";
+import { setLocalNotification, clearLocalNotification } from "./utils/helpers";
 
 const Stack = createStackNavigator();
 
 function App({ dispatch }) {
   useEffect(() => {
     dispatch(handleInitialData());
+    clearLocalNotification().then(setLocalNotification());
   });
   return (
     <NavigationContainer>
@@ -26,7 +28,6 @@ function App({ dispatch }) {
           component={DecksContainer}
           options={{ title: "Deck List" }}
         />
-        <Stack.Screen name="NewDeck" component={NewDeck} />
         <Stack.Screen
           name="Deck"
           component={Deck}
