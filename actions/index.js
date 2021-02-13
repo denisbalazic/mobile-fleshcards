@@ -1,4 +1,4 @@
-import { addNewDeck } from "../utils/api";
+import { fetchDecks, addNewDeck, addNewQuestion } from "../utils/api";
 import { getInitialData } from "../utils/data";
 
 export const RECEIVE_DECKS = "RECEIVE_DECKS";
@@ -9,20 +9,29 @@ export const ADD_QUESTION = "ADD_QUESTION";
 export const ADD_DECK = "ADD_DECK";
 export const RESET_CURRENT_CARD = "RESET_CURRENT_CARD";
 
-// export function handleInitialData() {
-//   return (dispatch) => {
-//     return getInitialData().then(({ decks }) => {
-//       dispatch(receiveDecks(decks));
-//     });
-//   };
-// }
-
 export function handleInitialData() {
-  return {
-    type: RECEIVE_DECKS,
-    decks: getInitialData(),
+  return (dispatch) => {
+    return fetchDecks().then((decks) => {
+      dispatch(receiveDecks(decks));
+    });
   };
 }
+
+export function receiveDecks(decks) {
+  return {
+    type: RECEIVE_DECKS,
+    decks,
+  };
+}
+
+// export function handleInitialData() {
+//   const decks = fetchDecks();
+//   console.log("from actions: ", decks);
+//   return {
+//     type: RECEIVE_DECKS,
+//     decks: getInitialData(),
+//   };
+// }
 
 export function setCurrentDeck(deck) {
   return {
@@ -51,7 +60,15 @@ export function setAnswerCorrect(isCorrect, currentDeck) {
   };
 }
 
-export function addQuestion({ question, answer, deckName }) {
+export function addQuestion(question) {
+  return (dispatch) => {
+    return addNewQuestion(question).then(() => {
+      dispatch(addQuestionToStore(question));
+    });
+  };
+}
+
+export function addQuestionToStore({ question, answer, deckName }) {
   return {
     type: ADD_QUESTION,
     question: { question, answer },
