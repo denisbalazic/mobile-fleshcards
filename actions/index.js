@@ -1,3 +1,4 @@
+import { addNewDeck } from "../utils/api";
 import { getInitialData } from "../utils/data";
 
 export const RECEIVE_DECKS = "RECEIVE_DECKS";
@@ -59,6 +60,7 @@ export function addQuestion({ question, answer, deckName }) {
 }
 
 export function addDeck(name) {
+  addNewDeck(name);
   return {
     type: ADD_DECK,
     name,
