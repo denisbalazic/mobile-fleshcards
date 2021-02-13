@@ -5,6 +5,7 @@ import Question from "./Question";
 import Answer from "./Answer";
 import Score from "./Score";
 import { setAnswerCorrect, increaseCurrentCard, resetCurrentCard } from "../actions";
+import { setLocalNotification, clearLocalNotification } from "../utils/helpers";
 
 const Card = ({ questions, currentDeck, dispatch, navigation }) => {
   const [answerShowed, setAnswerShowed] = useState(false);
@@ -16,6 +17,7 @@ const Card = ({ questions, currentDeck, dispatch, navigation }) => {
   const resetQuiz = () => {
     dispatch(resetCurrentCard());
     setAnswerShowed(false);
+    clearLocalNotification().then(setLocalNotification());
   };
   return (
     <View style={style.container}>

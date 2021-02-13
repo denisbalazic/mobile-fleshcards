@@ -11,14 +11,14 @@ import NewQuestion from "./components/NewQuestion";
 import NewDeck from "./components/NewDeck";
 import Card from "./components/Card";
 import Score from "./components/Score";
-import { setLocalNotification, clearLocalNotification } from "./utils/helpers";
+import { setLocalNotification } from "./utils/helpers";
 
 const Stack = createStackNavigator();
 
 function App({ dispatch }) {
   useEffect(() => {
     dispatch(handleInitialData());
-    clearLocalNotification().then(setLocalNotification());
+    setLocalNotification();
   });
   return (
     <NavigationContainer>
