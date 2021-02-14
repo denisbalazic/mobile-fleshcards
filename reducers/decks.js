@@ -29,7 +29,7 @@ export default function decks(state = {}, action) {
       return {
         ...state,
         [action.deckName]: {
-          ...state[action.deckname],
+          ...state[action.deckName],
           questions: updatedQuestions,
         },
       };

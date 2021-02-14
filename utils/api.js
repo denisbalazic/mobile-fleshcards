@@ -29,5 +29,4 @@ export async function addNewQuestion({ question, answer, deckName }) {
     },
   });
   AsyncStorage.setItem(DECK_KEY, updatedDecks);
-  console.log(updatedDecks);
 }
