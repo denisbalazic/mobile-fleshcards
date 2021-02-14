@@ -19,7 +19,7 @@ const NewDeck = ({ dispatch, navigation }) => {
       <Text>Name of new deck:</Text>
       <TextInput style={styles.input} onChangeText={(text) => setDeckName(text)} value={deckName} />
       <TouchableOpacity style={styles.touchable} onPress={handleSubmit}>
-        <Text style={styles.touchableText}>Add Deck</Text>
+        <Text style={styles.touchableText}>Create Deck</Text>
       </TouchableOpacity>
     </View>
   );

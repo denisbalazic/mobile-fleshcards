@@ -2,11 +2,12 @@ import React from "react";
 import { connect } from "react-redux";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
-const Deck = ({ navigation, currentDeck }) => {
+const Deck = ({ navigation, deckName, numOfQuestions }) => {
   return (
     <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>{currentDeck.name}</Text>
+      <View style={styles.header}>
+        <Text style={styles.title}>{deckName}</Text>
+        <Text style={styles.small}>{numOfQuestions}</Text>
       </View>
       <View>
         <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate("Card")}>
@@ -30,6 +31,12 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 8,
   },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+    marginBottom: 40,
+  },
   title: {
     fontSize: 36,
     marginBottom: 30,
@@ -49,9 +56,10 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = ({ currentDeck }) => {
+const mapStateToProps = ({ currentDeck, decks }) => {
   return {
-    currentDeck,
+    deckName: currentDeck.name,
+    numOfQuestions: decks[currentDeck.name].questions.length,
   };
 };
 
