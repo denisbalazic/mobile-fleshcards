@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, Pressable, StyleSheet, Animated } from "react-native";
 import { connect } from "react-redux";
 import { setCurrentDeck } from "../actions";
 import DeckHeader from "./DeckHeader";
@@ -9,13 +9,12 @@ const DeckList = ({ navigation, decks, dispatch }) => {
     dispatch(setCurrentDeck({ name: deckName }));
     navigation.navigate("Deck", { deckName });
   };
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Choose a Quiz!</Text>
       {decks.map((deck, id) => (
-        <Pressable key={id} onPress={() => handleDeckSelection(deck.name)}>
-          <DeckHeader key={id} deck={deck} />
-        </Pressable>
+        <DeckHeader key={id} deck={deck} handleDeckSelection={handleDeckSelection} />
       ))}
     </View>
   );
