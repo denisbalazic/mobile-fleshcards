@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import DeckList from "./DeckList";
 import NewDeck from "./NewDeck";
@@ -10,9 +9,13 @@ const DecksContainer = ({ navigation }) => {
   return (
     <Tab.Navigator
       tabBarOptions={{
-        activeTintColor: "tomato",
+        activeTintColor: "#006d77",
         inactiveTintColor: "gray",
-        style: styles.tabnav,
+        labelStyle: {
+          fontSize: 24,
+          margin: 0,
+          padding: 8,
+        },
       }}
     >
       <Tab.Screen name="DeckList" component={DeckList} navigation={navigation} />
@@ -20,12 +23,5 @@ const DecksContainer = ({ navigation }) => {
     </Tab.Navigator>
   );
 };
-
-const styles = StyleSheet.create({
-  tabnav: {
-    backgroundColor: "#dfdfdf",
-    fontSize: 20,
-  },
-});
 
 export default DecksContainer;

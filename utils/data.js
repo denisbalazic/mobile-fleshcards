@@ -1,32 +1,78 @@
 export function getInitialData() {
   return {
-    DEck1: {
-      name: "DEck1",
+    Space: {
+      name: "Space",
       questions: [
         {
-          question: "Koliko ima zvijezda u našoj galaksiji?",
-          answer: "cca 200 000 000 000",
+          question: "How many stars are there in our galaxy?",
+          answer: "100 billion stars",
         },
         {
-          question: "Kada počinje proljeće?",
-          answer: "20.3.",
+          question: "What is the smallest planet in our solar system?",
+          answer: "Mercury",
+        },
+        {
+          question: "How old is the universe in years?",
+          answer: "13.8 billion years",
+        },
+        {
+          question: "Who was the first person to reach space?",
+          answer: "Juri Gagarin",
+        },
+        {
+          question: "How long does it take for the Sun's rays to reach earth?",
+          answer: "8 minutes",
+        },
+        {
+          question: "What is the distance between Sun and Earth?",
+          answer: "148 million km",
         },
       ],
     },
-    Deck2: {
-      name: "Deck2",
+    Geography: {
+      name: "Geography",
       questions: [
         {
-          question: "Koliko je Sunce udaljeno od Zemlje?",
-          answer: "cca 150 000 000 km",
+          question: "What is the capital of New Zeland?",
+          answer: "Wellington",
         },
         {
-          question: "Koliko ima protona u atomu ugljika?",
-          answer: "6",
+          question: "What is the second biggest island?",
+          answer: "New Guinea",
         },
         {
-          question: "Koliki je pH vode?",
-          answer: "7",
+          question: "What is the name of the largest river to flow through Paris?",
+          answer: "The Seine",
+        },
+        {
+          question: "What did Ceylon change its name to in 1972?",
+          answer: "Sri Lanka",
+        },
+        {
+          question: "Mount Vesuvius casts a shadow over which modern Italian city?",
+          answer: "Naples",
+        },
+        {
+          question: "What is the largest desert in the world?",
+          answer: "Antarctica",
+        },
+        {
+          question: "What African country has the largest population?",
+          answer: "Nigeria",
+        },
+        {
+          question:
+            "The Strait of Gibraltar separates the Iberian Peninsular from which African country?",
+          answer: "Morocco",
+        },
+        {
+          question: "Constantinople and Byzantium are former names of which major city?",
+          answer: "Istanbul",
+        },
+        {
+          question:
+            "The world’s first national park was established in 1872 in which country? A bonus point for the name of the park…",
+          answer: "USA, Yellowstone",
         },
       ],
     },

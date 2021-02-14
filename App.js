@@ -8,15 +8,16 @@ import { handleInitialData } from "./actions";
 import DecksContainer from "./components/DecksContainer";
 import Deck from "./components/Deck";
 import NewQuestion from "./components/NewQuestion";
-import NewDeck from "./components/NewDeck";
 import Card from "./components/Card";
 import Score from "./components/Score";
 import { setLocalNotification } from "./utils/helpers";
+import { resetDecks } from "./utils/api";
 
 const Stack = createStackNavigator();
 
 function App({ dispatch }) {
   useEffect(() => {
+    // resetDecks();
     dispatch(handleInitialData());
     setLocalNotification();
   });

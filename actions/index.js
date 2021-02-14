@@ -1,4 +1,4 @@
-import { fetchDecks, addNewDeck, addNewQuestion } from "../utils/api";
+import { fetchDecks, addNewDeck, addNewQuestion, addBatchOfDecks } from "../utils/api";
 import { getInitialData } from "../utils/data";
 
 export const RECEIVE_DECKS = "RECEIVE_DECKS";
@@ -12,7 +12,13 @@ export const RESET_CURRENT_CARD = "RESET_CURRENT_CARD";
 export function handleInitialData() {
   return (dispatch) => {
     return fetchDecks().then((decks) => {
-      dispatch(receiveDecks(decks));
+      //if running app for first time populate with starter data
+      if (Object.keys(decks).length === 0) {
+        const starterDecks = getInitialData();
+        addBatchOfDecks(starterDecks).then(() => dispatch(receiveDecks(starterDecks)));
+      } else {
+        dispatch(receiveDecks(decks));
+      }
     });
   };
 }
@@ -23,15 +29,6 @@ export function receiveDecks(decks) {
     decks,
   };
 }
-
-// export function handleInitialData() {
-//   const decks = fetchDecks();
-//   console.log("from actions: ", decks);
-//   return {
-//     type: RECEIVE_DECKS,
-//     decks: getInitialData(),
-//   };
-// }
 
 export function setCurrentDeck(deck) {
   return {

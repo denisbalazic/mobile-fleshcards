@@ -9,7 +9,7 @@ const Score = ({ questions, resetQuiz, navigation }) => {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.text}>You have finished quiz</Text>
+        <Text style={styles.text}>You have finished quiz!</Text>
         <Text style={styles.text}>Number of questions: {questions.length}</Text>
         <Text style={styles.text}>
           Correct answers: {questions.filter((q) => q.isCorrect).length}
