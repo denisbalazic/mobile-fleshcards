@@ -20,11 +20,13 @@ const Card = ({ questions, currentDeck, dispatch, navigation }) => {
     clearLocalNotification().then(setLocalNotification());
   };
   return (
-    <View style={style.container}>
-      <Text>{currentDeck.name}</Text>
-      <Text>
-        {currentDeck.cardNo}/{questions.length}
-      </Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.title}>{currentDeck.name}</Text>
+        <Text style={styles.small}>
+          {currentDeck.cardNo}/{questions.length}
+        </Text>
+      </View>
       {questions.length === currentDeck.cardNo ? (
         <Score questions={questions} resetQuiz={resetQuiz} navigation={navigation} />
       ) : !answerShowed ? (
@@ -43,12 +45,23 @@ const Card = ({ questions, currentDeck, dispatch, navigation }) => {
   );
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
+    flex: 1,
     margin: 10,
     padding: 8,
-    backgroundColor: "purple",
-    borderRadius: 6,
+  },
+  header: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "baseline",
+    marginBottom: 40,
+  },
+  title: {
+    fontSize: 36,
+  },
+  small: {
+    fontSize: 20,
   },
 });
 

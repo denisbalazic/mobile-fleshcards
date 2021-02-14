@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { View, Text, TextInput, Button, StyleSheet } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet } from "react-native";
 import { addQuestion } from "../actions";
 
 const NewQuestion = ({ deckName, dispatch, navigation }) => {
@@ -14,31 +14,47 @@ const NewQuestion = ({ deckName, dispatch, navigation }) => {
     navigation.navigate("Deck", { deckName });
   };
   return (
-    <View style={style.container}>
-      <Text>Add new question</Text>
+    <View style={styles.container}>
+      <Text style={styles.text}>Add new question</Text>
       <Text>Question</Text>
-      <TextInput
-        style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-        onChangeText={(text) => setQuestion(text)}
-        value={question}
-      />
+      <TextInput style={styles.input} onChangeText={(text) => setQuestion(text)} value={question} />
       <Text>Answer</Text>
-      <TextInput
-        style={{ height: 40, borderColor: "gray", borderWidth: 1 }}
-        onChangeText={(text) => setAnswer(text)}
-        value={answer}
-      />
-      <Button title="Press me" onPress={handleSubmit} />
+      <TextInput style={styles.input} onChangeText={(text) => setAnswer(text)} value={answer} />
+      <TouchableOpacity style={styles.touchable} onPress={handleSubmit}>
+        <Text style={styles.touchableText}>Add question</Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     margin: 10,
     padding: 8,
-    backgroundColor: "purple",
-    borderRadius: 6,
+  },
+  text: {
+    alignSelf: "center",
+    marginTop: 30,
+    marginBottom: 30,
+    fontSize: 27,
+    color: "#6b705c",
+  },
+  input: {
+    marginBottom: 12,
+    padding: 5,
+    height: 40,
+    borderColor: "gray",
+    borderWidth: 1,
+  },
+  touchable: {
+    marginTop: 12,
+    padding: 6,
+    backgroundColor: "#6b705c",
+  },
+  touchableText: {
+    alignSelf: "center",
+    fontSize: 20,
+    color: "white",
   },
 });
 

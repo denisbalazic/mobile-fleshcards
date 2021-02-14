@@ -6,30 +6,46 @@ const Deck = ({ navigation, currentDeck }) => {
   return (
     <View style={styles.container}>
       <View>
-        <Text style={styles.header}>{currentDeck.name}</Text>
+        <Text style={styles.title}>{currentDeck.name}</Text>
       </View>
-      <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate("Card")}>
-        <Text>Start Quiz</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate("NewQuestion")}>
-        <Text>Add Question</Text>
-      </TouchableOpacity>
+      <View>
+        <TouchableOpacity style={styles.touchable} onPress={() => navigation.navigate("Card")}>
+          <Text style={styles.touchableText}>Start Quiz</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.touchable}
+          onPress={() => navigation.navigate("NewQuestion")}
+        >
+          <Text style={styles.touchableText}>Add Question</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: "space-between",
     margin: 10,
     padding: 8,
-    backgroundColor: "purple",
-    borderRadius: 6,
   },
-  header: {
-    fontSize: 30,
+  title: {
+    fontSize: 36,
+    marginBottom: 30,
+  },
+  small: {
+    fontSize: 20,
   },
   touchable: {
     margin: 10,
+    padding: 6,
+    backgroundColor: "#6b705c",
+  },
+  touchableText: {
+    alignSelf: "center",
+    fontSize: 20,
+    color: "white",
   },
 });
 

@@ -4,9 +4,8 @@ import { View, Text, StyleSheet } from "react-native";
 const DeckHeader = ({ deck }) => {
   return (
     <View style={styles.container}>
-      <Text>{deck.name}</Text>
-      <Text>{deck.questions.length}</Text>
-      <Text>Some text from DeckHeaderss</Text>
+      <Text style={styles.title}>{deck.name}</Text>
+      <Text style={styles.small}>Questiones: {deck.questions.length}</Text>
     </View>
   );
 };
@@ -15,8 +14,14 @@ const styles = StyleSheet.create({
   container: {
     margin: 10,
     padding: 8,
-    backgroundColor: "purple",
+    backgroundColor: "#ece4db",
     borderRadius: 6,
+  },
+  title: {
+    fontSize: 36,
+  },
+  small: {
+    fontSize: 20,
   },
 });
 

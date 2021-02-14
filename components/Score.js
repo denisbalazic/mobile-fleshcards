@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Button, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const Score = ({ questions, resetQuiz, navigation }) => {
   const handleBackToDeck = () => {
@@ -7,22 +7,45 @@ const Score = ({ questions, resetQuiz, navigation }) => {
     navigation.navigate("Deck");
   };
   return (
-    <View style={style.container}>
-      <Text>Some text from Score</Text>
-      <Text>Number of questions: {questions.length}</Text>
-      <Text>Correct answers: {questions.filter((q) => q.isCorrect).length}</Text>
-      <Button title="Quiz again" onPress={resetQuiz} />
-      <Button title="To Deck" onPress={handleBackToDeck} />
+    <View style={styles.container}>
+      <View>
+        <Text style={styles.text}>You have finished quiz</Text>
+        <Text style={styles.text}>Number of questions: {questions.length}</Text>
+        <Text style={styles.text}>
+          Correct answers: {questions.filter((q) => q.isCorrect).length}
+        </Text>
+      </View>
+      <View>
+        <TouchableOpacity style={styles.touchable} onPress={resetQuiz}>
+          <Text style={styles.touchableText}>Start over</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.touchable} onPress={handleBackToDeck}>
+          <Text style={styles.touchableText}>Back to Deck</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
 
-const style = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: "space-between",
     margin: 10,
-    padding: 8,
-    backgroundColor: "purple",
-    borderRadius: 6,
+  },
+  text: {
+    fontSize: 27,
+    color: "#6b705c",
+  },
+  touchable: {
+    marginTop: 12,
+    padding: 6,
+    backgroundColor: "#6b705c",
+  },
+  touchableText: {
+    alignSelf: "center",
+    fontSize: 20,
+    color: "white",
   },
 });
 
